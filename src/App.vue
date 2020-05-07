@@ -10,7 +10,7 @@ export default {
      * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
      */
 
-    let logs
+    /* let logs
     if (mpvuePlatform === 'my') {
       logs = mpvue.getStorageSync({key: 'logs'}).data || []
       logs.unshift(Date.now())
@@ -22,11 +22,11 @@ export default {
       logs = mpvue.getStorageSync('logs') || []
       logs.unshift(Date.now())
       mpvue.setStorageSync('logs', logs)
-    }
-  },
-  log () {
-    console.log(`log at:${Date.now()}`)
+    } */
   }
+  /* log () {
+    console.log(`log at:${Date.now()}`)
+  } */
 }
 </script>
 

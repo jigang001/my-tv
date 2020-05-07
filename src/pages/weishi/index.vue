@@ -25,7 +25,7 @@ export default {
   methods: {
     getChannelList () {
       this.$httpWX.post({
-        url: 'https://api.avatardata.cn/TVTime/LookUp?key=04586d229307477aa96526f6e53cd1bb&pId=1'
+        url: 'https://api.avatardata.cn/TVTime/LookUp?key=04586d229307477aa96526f6e53cd1bb&pId=2'
       }).then(res => {
         console.log(res)
         if (res.result && res.result.length > 0) {

@@ -1,12 +1,14 @@
 <template>
   <div class="tvList">
-    <div v-for="(item, index) in tvList" class="item" :key="index">
-      <div class="time">
-        {{item.time}}
+    <scroll-view scroll-y="true" style="height: 100%;">
+      <div v-for="(item, index) in tvList" class="item" :key="index">
+        <div class="time">
+          {{item.time}}
+        </div>
+        <div class="name">{{item.pName}}</div>
+        <div class="playing"><i></i></div>
       </div>
-      <div class="name">{{item.pName}}</div>
-      <div class="playing"><i></i></div>
-    </div>
+    </scroll-view>
   </div>
 </template>
 
@@ -28,6 +30,7 @@ export default {
 
 <style scoped>
   .tvList{
+    height: 100vh;
     flex: 1;
     padding: 0 5px;
   }

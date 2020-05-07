@@ -1,9 +1,7 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/logs/main",
-    "pages/counter/main"
-  ],
+    "pages/weishi/main"  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -13,19 +11,19 @@
   "tabBar": {
     "color": "#707070",
     "backgroundColor": "#fff",
-    "selectedColor": "#13227a",
+    "selectedColor": "#d81e06",
     "borderStyle": "white",
 
     "list": [{
       "text": "央视",
       "pagePath": "pages/index/main",
       "iconPath": "static/tabs/cctv_707070.png",
-      "selectedIconPath": "static/tabs/cctv_13227a.png"
+      "selectedIconPath": "static/tabs/cctv_d81e06.png"
     }, {
       "text": "卫视",
-      "pagePath": "pages/logs/main",
+      "pagePath": "pages/weishi/main",
       "iconPath": "static/tabs/weishi_707070.png",
-      "selectedIconPath": "static/tabs/weishi_13227a.png"
+      "selectedIconPath": "static/tabs/weishi_d81e06.png"
     }],
     "position": "bottom"
   }
