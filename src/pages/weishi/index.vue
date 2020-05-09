@@ -24,8 +24,8 @@ export default {
 
   methods: {
     getChannelList () {
-      this.$httpWX.post({
-        url: 'https://api.avatardata.cn/TVTime/LookUp?key=04586d229307477aa96526f6e53cd1bb&pId=2'
+      this.$httpWX.get({
+        url: this.$store.state.host + '/TVTime/LookUp?key=04586d229307477aa96526f6e53cd1bb&pId=2'
       }).then(res => {
         console.log(res)
         if (res.result && res.result.length > 0) {
@@ -40,8 +40,8 @@ export default {
     getTVlist (rel) {
       console.log(rel)
       this.refreshTVlist = false
-      this.$httpWX.post({
-        url: 'https://api.avatardata.cn/TVTime/TVlist?key=04586d229307477aa96526f6e53cd1bb&code=' + rel
+      this.$httpWX.get({
+        url: this.$store.state.host + '/TVTime/TVlist?key=04586d229307477aa96526f6e53cd1bb&code=' + rel
       }).then(res => {
         console.log(res)
         if (res.result && res.result.length > 0) {
