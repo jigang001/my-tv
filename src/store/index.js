@@ -5,6 +5,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     version: '1.0.0',
-    host: 'http://10.0.4.9:3000'
+    host: 'https://api.jungkisong.cn'
   }
 })

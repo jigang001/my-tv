@@ -25,7 +25,7 @@ export default {
   methods: {
     getChannelList () {
       this.$httpWX.get({
-        url: this.$store.state.host + '/TVTime/LookUp?key=04586d229307477aa96526f6e53cd1bb&pId=2'
+        url: this.$store.state.host + '/TVTime/LookUp?pId=2'
       }).then(res => {
         console.log(res)
         if (res.result && res.result.length > 0) {
@@ -41,7 +41,7 @@ export default {
       console.log(rel)
       this.refreshTVlist = false
       this.$httpWX.get({
-        url: this.$store.state.host + '/TVTime/TVlist?key=04586d229307477aa96526f6e53cd1bb&code=' + rel
+        url: this.$store.state.host + '/TVTime/TVlist?code=' + rel
       }).then(res => {
         console.log(res)
         if (res.result && res.result.length > 0) {
