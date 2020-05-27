@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <channel :channelList="channelList" :defaultChannel="currentChannel" @changeChannel="getTVlist"></channel>
-    <tvList v-if="refreshTVlist" :tvList="tvList"></tvList>
+    <tvList v-if="refreshTVlist" :tvList="tvList" :currentPlay="currentPlay"></tvList>
   </div>
 </template>
 
@@ -22,10 +22,24 @@ export default {
     }
   },
 
+  computed: {
+    currentPlay () {
+      let nowStamp = Date.parse(new Date())
+      let currentItem = ''
+      for (let i = 0; i < this.tvList.length; i++) {
+        let itemStamp = this.tvList[i].timeStamp
+        if (nowStamp >= itemStamp) {
+          currentItem = itemStamp
+        }
+      }
+      return 'c' + currentItem
+    }
+  },
+
   methods: {
     getChannelList () {
       this.$httpWX.get({
-        url: this.$store.state.host + '/TVTime/LookUp?pId=1'
+        url: this.$store.state.host + '/myTV/TVTime/LookUp?pId=1'
       }).then(res => {
         console.log(res)
         if (res.result && res.result.length > 0) {
@@ -41,11 +55,12 @@ export default {
       console.log(rel)
       this.refreshTVlist = false
       this.$httpWX.get({
-        url: this.$store.state.host + '/TVTime/TVlist?code=' + rel
+        url: this.$store.state.host + '/myTV/TVTime/TVlist?code=' + rel
       }).then(res => {
         console.log(res)
         if (res.result && res.result.length > 0) {
           for (let item of res.result) {
+            item.timeStamp = Date.parse(item.time)
             item.time = item.time.split(' ')[1]
           }
           this.tvList = res.result
@@ -62,6 +77,30 @@ export default {
   },
 
   onLoad () {
+    const vm = this
+    wx.login({
+      success (res) {
+        console.log(res)
+        if (res.code) {
+          // 发起网络请求
+          vm.$httpWX.get({
+            url: 'https://api.jungkisong.cn/myTV/users',
+            data: {
+              code: res.code
+            }
+          }).then(result => {
+            console.log(result)
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+  },
+
+  onShow () {
     this.getChannelList()
   },
 

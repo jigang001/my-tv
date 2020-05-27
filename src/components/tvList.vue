@@ -1,7 +1,7 @@
 <template>
   <div class="tvList">
-    <scroll-view scroll-y="true" style="height: 100%;">
-      <div v-for="(item, index) in tvList" class="item" :key="index">
+    <scroll-view scroll-y="true" :scroll-into-view="currentPlay" style="height: 100%;">
+      <div v-for="(item, index) in tvList" class="item" :class="{active: currentPlay === 'c' + item.timeStamp}" :id="'c' + item.timeStamp" :key="index">
         <div class="time">
           {{item.time}}
         </div>
@@ -19,7 +19,8 @@ export default {
     tvList: {
       type: Array,
       default: []
-    }
+    },
+    currentPlay: ''
   },
 
   mounted () {
